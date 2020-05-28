@@ -58,6 +58,8 @@ public class ItemClearingWarning implements Runnable {
                 player.playSound(plugin.getCclConfig().sounds.warningSound, plugin.getCclConfig().sounds.soundCategory, player.getPosition(), 25);
             if (plugin.getMessagesCfg().actionBar) player.sendMessage(ChatTypes.ACTION_BAR, rawMessage);
         }
-        plugin.getGame().getServer().getBroadcastChannel().send(message);
+        if (plugin.getMessagesCfg().broadcast) {
+            plugin.getGame().getServer().getBroadcastChannel().send(message);
+        }
     }
 }

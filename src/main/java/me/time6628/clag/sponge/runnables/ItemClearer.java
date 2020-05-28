@@ -35,7 +35,9 @@ public class ItemClearer implements Runnable {
                 player.playSound(plugin.getCclConfig().sounds.clearedSound, plugin.getCclConfig().sounds.soundCategory, player.getPosition(), 25);
             if (plugin.getMessagesCfg().actionBar) player.sendMessage(ChatTypes.ACTION_BAR, messageRaw);
         }
-        plugin.getGame().getServer().getBroadcastChannel().send(message);
+        if (plugin.getMessagesCfg().broadcast) {
+            plugin.getGame().getServer().getBroadcastChannel().send(message);
+        }
         if (plugin.isBossBarEnabled()) {
             ItemClearingWarning.bossBarUpdater.cancel(true);
             plugin.getGame().getScheduler().createTaskBuilder().execute(() -> {

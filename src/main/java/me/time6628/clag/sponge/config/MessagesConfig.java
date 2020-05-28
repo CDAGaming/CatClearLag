@@ -25,4 +25,7 @@ public class MessagesConfig {
 
     @Setting("Action Bar")
     public boolean actionBar = true;
+
+    @Setting("Broadcast in Chat")
+    public boolean broadcast = true;
 }
